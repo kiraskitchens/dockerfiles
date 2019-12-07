@@ -1,10 +1,10 @@
 # escape=`
 
-FROM mcr.microsoft.com/windows/servercore:1803-amd64 AS installer
+FROM mcr.microsoft.com/windows/servercore:1809 AS installer
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-ENV UMBRACO_VERSION="7.6.0" `
-    UMBRACO_DOWNLOAD_ID="270489"
+ENV UMBRACO_VERSION="8.3.0" `
+    UMBRACO_DOWNLOAD_ID="279395"
 
 RUN Invoke-WebRequest -UseBasicParsing -OutFile umbraco.zip -Uri "https://our.umbraco.org/ReleaseDownload?id=$($env:UMBRACO_DOWNLOAD_ID)"; `
     Expand-Archive umbraco.zip -DestinationPath C:\umbraco
@@ -12,7 +12,7 @@ RUN Invoke-WebRequest -UseBasicParsing -OutFile umbraco.zip -Uri "https://our.um
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-ENV UMBRACO_VERSION="7.6.0" `
+ENV UMBRACO_VERSION="8.3.0" `
     UMBRACO_ROOT="C:\inetpub\wwwroot\Umbraco"
 
 RUN Remove-Website 'Default Web Site'; `
