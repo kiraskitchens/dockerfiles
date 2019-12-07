@@ -2,7 +2,7 @@
 
 This is a stock install of [Umbraco](https://our.umbraco.org/), the open-source .NET Content Management System, which you can run in a Docker container on Windows.
 
-## Usage 
+## Dockerfile Usage 
 
 ```
 docker build -t kiraskitchens/umbraco .
@@ -12,22 +12,8 @@ docker build -t kiraskitchens/umbraco .
 docker run -d -P --name umbraco kiraskitchens/umbraco
 ```
 
-Grab the IP address of the container, and browse to the website:
+## Docker Compose Usage 
 
 ```
-$ip = docker inspect --format '{{ .NetworkSettings.Networks.nat.IPAddress }}' umbraco
-start "http://$ip"
+docker-compose up -d --build
 ```
-
-You'll see the normal Umbraco setup screen, and you can go on to configure your site:
-
-![Umbraco 7 install on Docker](img/docker-umbraco-install_small.png)
-
-
-## Building a custom Umbraco image
-
-You can use this image as a base to build a custom Docker image, with your Umbraco site already packaged. 
-
-See how to do that with [umbraco-demo](../umbraco-demo/README.md):
-
-![Custom Umbraco site on Docker](img/docker-umbraco-i2d_small.png)
