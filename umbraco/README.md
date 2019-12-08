@@ -11,9 +11,3 @@ docker build -t kiraskitchens/umbraco .
 ```
 docker run -d -P --name umbraco kiraskitchens/umbraco
 ```
-
-## Docker Compose Usage 
-
-```
-docker-compose up -d --build
-```

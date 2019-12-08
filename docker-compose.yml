@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  umbraco:
+    build:
+      context: ./umbraco
+      dockerfile: Dockerfile
+    init: true
+    restart: always
+    container_name: umbraco
+    ports:
+      - "8080:80"
+
+  sqlserver:
+    build:
+      context: ./sql-server
+      dockerfile: Dockerfile
+    init: true
+    restart: always
+    container_name: sqlserver
+    ports:
+      - "5434:1433"
+
+networks:
+  default:
+    external:
+      name: nat

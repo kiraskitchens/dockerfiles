@@ -20,7 +20,7 @@ RUN Remove-Website 'Default Web Site'; `
     New-Website -Name 'umbraco' -PhysicalPath $env:UMBRACO_ROOT -Port 80 -Force; 
 
 HEALTHCHECK --interval=5s `
-CMD powershell -command `
+ CMD powershell -command `
     try { `
         $response = iwr http://localhost/ -UseBasicParsing; `
         if ($response.StatusCode -eq 200) { return 0} `
