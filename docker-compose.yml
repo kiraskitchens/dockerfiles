@@ -11,13 +11,13 @@ services:
     ports:
       - "8080:80"
 
-  sqlserver:
+  sql-server:
     build:
       context: ./sql-server
       dockerfile: Dockerfile
     init: true
     restart: always
-    container_name: sqlserver
+    container_name: sql-server
     ports:
       - "5434:1433"
 
